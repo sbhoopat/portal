@@ -1,1 +1,80 @@
-<p>member-details works!</p>
+<mat-sidenav-container fullscreen>
+  <mat-sidenav
+    #sidenav
+    mode="side"
+    class="example-sidenav"
+    [ngStyle]="{ 'width.em': sidenavWidth }"
+    opened="true"
+    (click)="onselect($event)"
+  >
+    <div class="logo">
+      <img src="assets/logo.png" />
+      <button class="btn-green">+NEW REQUEST</button>
+    </div>
+    <mat-nav-list>
+      <mat-list-item routerLink="1" routerLinkActive="active">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="lead">REQUESTS</h5>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="2" routerLinkActive="active">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="lead">CHECK ELIGIBILITY</h5>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="3" routerLinkActive="active">
+        <mat-icon mat-list-icon>local_phone</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="lead">AGENCIES</h5>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="/user" routerLinkActive="active">
+        <mat-icon mat-list-icon>person</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="lead">CASE MANAGERS</h5>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="3" routerLinkActive="active">
+        <mat-icon mat-list-icon>local_phone</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="lead">RAMZI ALTAMINI</h5>
+        </div>
+      </mat-list-item>
+      <mat-list-item routerLink="3" routerLinkActive="active">
+        <mat-icon mat-list-icon>settings</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="lead">COMPANY SETTINGS</h5>
+        </div>
+      </mat-list-item>
+
+      <mat-list-item routerLink="3" routerLinkActive="active">
+        <mat-icon mat-list-icon>folder</mat-icon>
+        <div fxFlex="10"></div>
+        <div *ngIf="sidenavWidth > 6" class="sidenav-item">
+          <h5 class="lead">PORTAL FAQ</h5>
+        </div>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <div class="example-sidenav-content">
+    <div *ngIf="selectedNav === 'CASE MANAGERS'">
+      <app-user></app-user>
+    </div>
+    <div *ngIf="selectedNav === '+NEW REQUEST' || selectedNav === 'REQUESTS'">
+      <app-request></app-request>
+    </div>
+    <div *ngIf="selectedNav === 'COMPANY SETTINGS'">
+      <app-company-settings></app-company-settings>
+    </div>
+  </div>
+</mat-sidenav-container>
